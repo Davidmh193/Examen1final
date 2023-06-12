@@ -34,7 +34,7 @@ public class ParcelaModelo extends Conector {
 	}
 	
 	
-	public static Parcela getParcelaReserva(int id) {
+	public Parcela getParcelaReserva(int id) {
 
 		String sql = "select * from parcelas where id=?";
 		Conector conector = new Conector();
@@ -64,6 +64,7 @@ public class ParcelaModelo extends Conector {
 
 			
 	}
+	
 	
 	
 	

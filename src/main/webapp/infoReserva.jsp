@@ -39,9 +39,9 @@
 					<tbody>
 							
 						<tr>
-							<td>${parcelas.numero}</td>
-							<td>${parcelas.mcuadrados}</td>
-							<td>${parcelas.preciodia}</td>
+							<td>${parcela.numero}</td>
+							<td>${parcela.mcuadrados}</td>
+							<td>${parcela.preciodia}</td>
 						</tr>	
 						
 					</tbody>
@@ -67,6 +67,13 @@
 					<tbody>
 
 						<tr>
+							<td>${reserva.nombreUsuario}</td>
+							<td>${reserva.apellidoUsuario}</td>
+							<td>${reserva.dniUsuario}</td>
+							<td>${reserva.numeroUsuario}</td>
+							<td>${reserva.inicioReserva}</td>
+							<td>${reserva.finReserva}</td>
+							<td>${reserva.luz}</td>
 							
 						</tr>
 

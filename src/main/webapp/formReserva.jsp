@@ -22,15 +22,15 @@
 					<table>
 						<tr>
 							<td>Nombre:</td>
-							<td><input type="text" name="nombre" value=""/></td>
+							<td><input type="text" name="nombre_usuario" value=""/></td>
 						</tr>
 						<tr>
 							<td>Apellido:</td>
-							<td><input type="text" name="apellido" value=""/></td>
+							<td><input type="text" name="apellido_usuario" value=""/></td>
 						</tr>
 						<tr>
 							<td>Dni:</td>
-							<td><input type="text" name="dni" value=""/></td>
+							<td><input type="text" name="dni_usuario" value=""/></td>
 						</tr>
 						<tr>
 							<td>Numero de pesonas:</td>
@@ -38,12 +38,12 @@
 						</tr>
 						<tr>
 							<td>Fecha inicio:</td>
-							<td><input type="text" name="fecha_inicio"
+							<td><input type="text" name="inicio_reserva"
 								placeholder="dd-MM-yyyy" value="" /></td>
 						</tr>
 						<tr>
 							<td>Fecha fin:</td>
-							<td><input type="text" name="fecha_fin"
+							<td><input type="text" name="fin_reserva"
 								placeholder="dd-MM-yyyy" value="" /></td>
 						</tr>
 						<tr>

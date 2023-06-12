@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.ParcelaModelo;
 import DAO.ReservaModelo;
 
 /**
@@ -34,7 +35,15 @@ public class AlmacenarReserva extends HttpServlet {
 		//TODO implementar la funcionalidad de almacenar reserva
 		//se abrirá la vista infoReserva
 		
-		request.getRequestDispatcher("CancelarReserva");
+		ReservaModelo reservaModelo = new ReservaModelo();	
+		ParcelaModelo parcelaModelo = new ParcelaModelo();
+		int idparcela = Integer.parseInt(request.getParameter("id_parcela"));
+		int ultimaReserva = Integer.parseInt(request.getParameter("id_reserva"));
+		
+		request.setAttribute("parcela", parcelaModelo.getParcelaReserva(idparcela));
+		request.setAttribute("reserva", reservaModelo.getReserva(ultimaReserva));
+		request.getRequestDispatcher("infoReserva.jsp").forward(request, response);
+	
 	}
 
 	/**
@@ -45,13 +54,14 @@ public class AlmacenarReserva extends HttpServlet {
 		ReservaModelo reservar = new ReservaModelo();
 		
 		int idparcela = Integer.parseInt(request.getParameter("id_parcela"));
-		String nombreUsuario = request.getParameter("nombre");
-		String apellidoUsuario =request.getParameter("apellido");
-		String dniUsuario= request.getParameter("dni");
+		String nombreUsuario = request.getParameter("nombre_usuario");
+
+		String apellidoUsuario =request.getParameter("apellido_usuario");
+		String dniUsuario= request.getParameter("dni_usuario");
 		int numeroUsuario=Integer.parseInt(request.getParameter("numero_personas"));
-		String inicioReserva = request.getParameter("fecha_inicio");
-		String finReserva = request.getParameter("fecha_fin");
-		boolean luz = Boolean.parseBoolean(request.getParameter("luz"));
+		String inicioReserva = request.getParameter("inicio_reserva");
+		String finReserva = request.getParameter("fin_reserva");
+		boolean luz = false;
 		
 		
 		Date inicioRe = null;
@@ -69,6 +79,13 @@ public class AlmacenarReserva extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if((request.getParameter("luz"))!=null) {
+			luz =true;
+		}else {
+			luz =false;
+		}
+			
+		
 		
 		try {
 			reservar.insertarReserva(nombreUsuario, apellidoUsuario, dniUsuario, numeroUsuario, inicioRe, finRe, luz, idparcela);
@@ -76,8 +93,12 @@ public class AlmacenarReserva extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		int ultimaReserva=0;
+		ultimaReserva= reservar.getUltimaId();
+		
 	
-		response.sendRedirect(request.getContextPath() + "/CancelarReserva");
+		response.sendRedirect(request.getContextPath() + "/AlmacenarReserva?id_reserva="+ultimaReserva+"&id_parcela="+idparcela);
 		
 		
 	}

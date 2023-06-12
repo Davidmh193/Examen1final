@@ -59,6 +59,9 @@ public class ReservaModelo extends Conector{
 	    c.cerrar();
 	    return id;
 	}
+	
+	
+	
 
 	
 	
@@ -81,6 +84,43 @@ public class ReservaModelo extends Conector{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+
+	public Reserva getReserva(int id) {
+
+		String sql = "select * from reservas where id=?";
+		Conector conector = new Conector();
+		
+		conector.conectar();
+		PreparedStatement pSt;
+		Reserva reser = new Reserva();
+		
+		try {
+			pSt = conector.getCon().prepareStatement(sql);
+			pSt.setInt(1, id);
+			ResultSet resultado = pSt.executeQuery();
+			resultado.next();
+			
+			reser.setId(resultado.getInt("id"));
+			reser.setNombreUsuario("nombre_usuario");
+			reser.setApellidoUsuario("apellido_usuario");
+			reser.setDniUsuario("dni_usuario");
+			reser.setNumeroUsuario(resultado.getInt("numero_usuarios"));
+			reser.setInicioReserva(resultado.getDate("inicio_reserva"));
+			reser.setFechares(resultado.getDate("fin_reserva"));
+			reser.setLuz(resultado.getBoolean("luz"));
+
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		return reser;
+
+			
 	}
 
 }

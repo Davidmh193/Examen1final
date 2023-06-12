@@ -32,13 +32,10 @@ public class CancelarReserva extends HttpServlet {
 		//TODO implementar la eliminacion de la reserva
 		//abrir la vista confirmacion.jsp
 	
-		ParcelaModelo parcelaModelo =new ParcelaModelo();
-		ReservaModelo reservaModelo =new ReservaModelo();
 
-		
-		request.setAttribute("parcelas", parcelaModelo.getParcelaReserva(Integer.parseInt(request.getParameter("id"))));
-		request.setAttribute("reserva", reservaModelo.getUltimaId());
 		request.getRequestDispatcher("infoReserva.jsp").forward(request, response);
+		
+		
 	}
 		
 		
